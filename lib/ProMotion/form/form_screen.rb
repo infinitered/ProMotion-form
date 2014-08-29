@@ -1,6 +1,10 @@
 module ProMotion
-  class FormScreen < ViewController
+  class FormScreen < FXFormController
     include ProMotion::ScreenModule
-    include ProMotion::FormScreenModule
+
+    def screen_setup
+      self.formController.form = PM::Form.new(self.form_data)
+    end
+
   end
 end

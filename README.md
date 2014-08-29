@@ -20,7 +20,7 @@ $ rake pod:install
 
 ## Usage
 
-Easily create a form screen. Powered by the CocoaPod [EZForm](https://github.com/chrismiles/EZForm).
+Easily create a form screen. Powered by the CocoaPod [FXForms](https://github.com/nicklockwood/FXForms).
 
 *Has all the methods of PM::Screen*
 
