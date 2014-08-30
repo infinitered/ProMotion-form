@@ -31,7 +31,20 @@ class MyFormScreen < PM::FormScreen
   title "My Form"
 
   def form_data
-    []
+    [{
+      title: "Account Information",
+      cells: [{
+        name: "email",
+        title: "ID",
+        type: :email,
+        value: current_user.email,
+      }, {
+        name: "password",
+        title: "Password",
+        type: :password,
+        value: ""
+      }]
+    }]
   end
 
 end
@@ -50,6 +63,9 @@ We've used and like Formotion for some form-heavy apps, but it's a rather bulky 
 Method that is called to build the form.
 
 ```ruby
+class AccountScreen < PM::FormScreen
+  title "Account Info"
+
   def form_data
     [{
       title: "Account Information",
@@ -61,8 +77,8 @@ Method that is called to build the form.
       }, {
         name: "password",
         title: "Password",
-        value: ""
         type: :password,
+        value: ""
       }, {
         name: :submit,
         title: "Submit",
@@ -71,29 +87,50 @@ Method that is called to build the form.
     }]
   end
 
-  def my_action(m)
-    # m is the calling cell, in this case the Submit cell
-    PM.logger.debug render_form.to_s
+  def my_action(cell)
+    # cell is the calling cell, in this case the Submit cell
+    render_form # use to save the data
   end
+end
 ```
 
 All possible properties:
 
 ```ruby
 {
-  label: "Name"
-  type: :string
-  header: <todo>
-  key: <todo>
-  type: <todo>
-  title: <todo>
-  options: <todo>
-  placeholder: <todo>
-  default: <todo>
-  value: <todo>
-  action: <todo>
+  label: "Name", # or title:
+  name: :name, # required
+  type: :string, # :default is default...
+  options: [ "Water", "Fire", "Wind" ], # for :option type
+  placeholder: "Your name",
+  default: "Jamon",
+  value: "Jamon Holmgren",
+  action: :"my_action:" # use symbol literal with trailing colon
 }
 ```
+
+##### Types of fields:
+
+* `:default`
+* `:label`
+* `:text`
+* `:longtext`
+* `:url`
+* `:email`
+* `:phone`
+* `:password`
+* `:number`
+* `:integer`
+* `:unsigned`
+* `:float`
+* `:bitfield`
+* `:boolean`
+* `:option`
+* `:date`
+* `:time`
+* `:datetime`
+* `:image`
+
 
 #### update_form_data
 
