@@ -5,7 +5,7 @@
 ProMotion-form provides a PM::FormScreen for the
 popular RubyMotion gem [ProMotion](https://github.com/clearsightstudio/ProMotion).
 
-![form](http://clrsight.co/jh/Screen_Shot_2014-08-29_at_4.03.13_PM.png)
+![form](http://clrsight.co/jh/Screen_Shot_2014-08-29_at_4.03.13_PM.png?+)
 
 ## Installation
 
