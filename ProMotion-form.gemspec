@@ -1,7 +1,7 @@
 # -*- encoding: utf-8 -*-
 Gem::Specification.new do |spec|
   spec.name          = "ProMotion-form"
-  spec.version       = "0.0.1"
+  spec.version       = "0.1.0"
   spec.authors       = ["Jamon Holmgren"]
   spec.email         = ["jamon@clearsightstudio.com"]
   spec.description   = %q{Adds form screen support to ProMotion.}

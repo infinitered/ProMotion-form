@@ -1,27 +1,80 @@
 module ProMotion
   class Form
-    attr_accessor :form_data
+    attr_reader :form_data
 
     def initialize(form_data)
       @form_data = form_data
     end
 
+    # Smartly creates a "dumb" FXForms-compatible form object.
+    # It contains the values for every field and also has the
+    # instructions on how to build the form.
+    def build
+      props = properties
+      form_struct = Struct.new(:fields, *props) do
+        props.each do |p|
+          alias_method "set#{p.capitalize}:", "#{p}="
+        end
+      end
+      form_struct.new(form_fields, *values)
+    end
+
+  private
+
     def fields
-      example_fields
+      @fields ||= begin
+        header = nil
+        form_data.map do |section|
+          header = section[:title]
+          Array(section[:cells]).map do |input|
+            input_data(input, header).tap{|i| header = nil }
+          end
+        end.flatten
+      end
+    end
+
+    def properties
+      fields.map{ |f| f[:key] }
+    end
+
+    def values
+      fields.map{ |f| f[:value].to_s }
+    end
+
+    def form_fields
+      fields.map{ |f| f.dup.tap{|f2| f2.delete(:value) } }
+    end
+
+    def input_data(input, header)
+      data = {}
+      data[:header] = header if header
+      data[:key] = input.fetch(:name)
+      data[:type] = input[:type] if input[:type]
+      data[:title] = input[:label] || input[:title] || input[:name].to_s
+      data[:options] = input[:options] if input[:options]
+      data[:placeholder] = input[:placeholder] if input[:placeholder]
+      data[:default] = input[:default] if input[:default]
+      data[:value] = input[:value] if input[:value]
+      data[:action] = input[:action] if input[:action]
+      data
     end
 
     def example_fields
       [
         {
           key: "email",
-          header: "Account"
+          header: "Account",
+          type: :email
         },
-        "password",
+        {
+          key: "password",
+          type: :password
+        },
         "repeatPassword",
         {
           key: "name",
           header: "Details",
-          "textField.autocapitalizationType" => UITextAutocapitalizationTypeWords
+          # "textField.autocapitalizationType" => UITextAutocapitalizationTypeWords
         },
         {
           key: "gender",
@@ -33,24 +86,24 @@ module ProMotion
         {
           key: "country",
           options: [ "us", "ca", "gb", "sa", "be"],
-          default: "us",
-          valueTransformer: ISO3166CountryValueTransformer.alloc.init
+          # default: "us",
+          # valueTransformer: ISO3166CountryValueTransformer.alloc.init
         },
         {
           key: "language",
           options: [ "English", "Spanish", "French", "Dutch" ],
-          default: "English",
-          cell: FXFormOptionPickerCell
+          # default: "English",
+          # cell: FXFormOptionPickerCell
         },
         {
           key: "interests",
-          default: "Videogames",
+          # default: "Videogames",
           options: [ "Videogames", "Animals", "Cooking" ]
         },
         {
           key: "otherInterests",
           type: :bitfield,
-          default: "InterestComputers",
+          # default: "InterestComputers",
           options: [ "Computers", "Socializing", "Sports" ]
         },
         {
@@ -64,7 +117,7 @@ module ProMotion
           title: "",
           placeholder: "Free",
           options: [ "Micro", "Normal", "Maxi" ],
-          cell: FXFormOptionSegmentsCell
+          # cell: FXFormOptionSegmentsCell
         },
         {
           key: "termsAndConditions",
@@ -83,7 +136,6 @@ module ProMotion
         },
       ]
     end
-
   end
 end
 
