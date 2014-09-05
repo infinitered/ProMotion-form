@@ -162,7 +162,7 @@ None yet.
 
 #### form_object (read only)
 
-This is a Struct with a `#fields` method (what is used to build the form in FXForms) and writeable properties for each field.
+This is a Struct with a `#fields` method (which is used to build the form in FXForms) and writeable properties for each field.
 
 ## Contributing
 
