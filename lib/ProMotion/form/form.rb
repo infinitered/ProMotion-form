@@ -26,8 +26,9 @@ module ProMotion
         header = nil
         form_data.map do |section|
           header = section[:title]
+          footer = section[:footer]
           Array(section[:cells]).map do |input|
-            input_data(input, header).tap{|i| header = nil }
+            input_data(input, header, footer).tap{|i| header = nil; footer = nil }
           end
         end.flatten
       end
@@ -45,7 +46,7 @@ module ProMotion
       fields.map{ |f| f.dup.tap{|f2| f2.delete(:value) } }
     end
 
-    def input_data(input, header)
+    def input_data(input, header, footer)
       data = {}
       data[:header] = header if header
       data[:key] = input.fetch(:name)
@@ -57,84 +58,6 @@ module ProMotion
       data[:value] = input[:value] if input[:value]
       data[:action] = input[:action] if input[:action]
       data
-    end
-
-    def example_fields
-      [
-        {
-          key: "email",
-          header: "Account",
-          type: :email
-        },
-        {
-          key: "password",
-          type: :password
-        },
-        "repeatPassword",
-        {
-          key: "name",
-          header: "Details",
-          # "textField.autocapitalizationType" => UITextAutocapitalizationTypeWords
-        },
-        {
-          key: "gender",
-          options: [ "Male", "Female", "It's Complicated" ]
-        },
-        "dateOfBirth",
-        "profilePhoto",
-        "phone",
-        {
-          key: "country",
-          options: [ "us", "ca", "gb", "sa", "be"],
-          # default: "us",
-          # valueTransformer: ISO3166CountryValueTransformer.alloc.init
-        },
-        {
-          key: "language",
-          options: [ "English", "Spanish", "French", "Dutch" ],
-          # default: "English",
-          # cell: FXFormOptionPickerCell
-        },
-        {
-          key: "interests",
-          # default: "Videogames",
-          options: [ "Videogames", "Animals", "Cooking" ]
-        },
-        {
-          key: "otherInterests",
-          type: :bitfield,
-          # default: "InterestComputers",
-          options: [ "Computers", "Socializing", "Sports" ]
-        },
-        {
-          key: "about",
-          type: :longtext,
-          placeholder: "Text..."
-        },
-        {
-          header: "Plan",
-          key: "plan",
-          title: "",
-          placeholder: "Free",
-          options: [ "Micro", "Normal", "Maxi" ],
-          # cell: FXFormOptionSegmentsCell
-        },
-        {
-          key: "termsAndConditions",
-          header: "Legal"
-        },
-        "privacyPolicy",
-        {
-          key: "agreedToTerms",
-          title: "I Agree To These Terms",
-          type: :option
-        },
-        {
-          title: "Submit",
-          header: "",
-          action: "submitRegistrationForm:"
-        },
-      ]
     end
   end
 end

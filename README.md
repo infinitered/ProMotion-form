@@ -33,6 +33,7 @@ class MyFormScreen < PM::FormScreen
   def form_data
     [{
       title: "Account Information",
+      footer: "Some help text",
       cells: [{
         name: "email",
         title: "ID",
@@ -50,9 +51,9 @@ class MyFormScreen < PM::FormScreen
 end
 ```
 
-### Why not Formotion?
+### What about Formotion?
 
-We've used and like Formotion for some form-heavy apps, but it's a rather bulky gem. ProMotion-form works better with ProMotion and is a lot lighter.
+We have used and like Formotion for some form-heavy apps, but it's a rather bulky gem. ProMotion-form works better with ProMotion and is a lot smaller.
 
 ---
 
@@ -69,6 +70,7 @@ class AccountScreen < PM::FormScreen
   def form_data
     [{
       title: "Account Information",
+      footer: "Help text here",
       cells: [{
         name: "email",
         title: "ID",
@@ -94,18 +96,18 @@ class AccountScreen < PM::FormScreen
 end
 ```
 
-All possible properties:
+All possible form field properties:
 
 ```ruby
 {
   label: "Name", # or title:
   name: :name, # required
-  type: :string, # :default is default...
-  options: [ "Water", "Fire", "Wind" ], # for :option type
+  type: :string, # :default is default...like a button
+  options: [ "Water", "Fire", "Wind" ], # for a subform select (`type` can be anything)
   placeholder: "Your name",
   default: "Jamon", # Coming soon
   value: "Jamon Holmgren",
-  action: :"my_action:" # use symbol literal with trailing colon
+  action: :"my_action:" # use symbol literal with trailing colon due to Obj-C semantics
 }
 ```
 
