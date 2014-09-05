@@ -103,7 +103,7 @@ All possible properties:
   type: :string, # :default is default...
   options: [ "Water", "Fire", "Wind" ], # for :option type
   placeholder: "Your name",
-  default: "Jamon",
+  default: "Jamon", # Coming soon
   value: "Jamon Holmgren",
   action: :"my_action:" # use symbol literal with trailing colon
 }
@@ -117,11 +117,11 @@ All possible properties:
 * `:longtext`
 * `:url`
 * `:email`
-* `:phone`
+* `:phone` - Coming soon
 * `:password`
 * `:number`
 * `:integer`
-* `:unsigned`
+* `:unsigned` - Coming soon
 * `:float`
 * `:bitfield`
 * `:boolean`
