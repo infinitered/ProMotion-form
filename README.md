@@ -41,7 +41,7 @@ class MyFormScreen < PM::FormScreen
         value: current_user.email,
       }, {
         name: "password",
-        title: "Password",
+        title: "New Password",
         type: :password,
         value: ""
       }]

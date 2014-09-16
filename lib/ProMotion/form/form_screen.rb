@@ -4,8 +4,9 @@ module ProMotion
 
     attr_reader :form_object
 
-    def screen_setup
+    def viewDidLoad
       update_form_data
+      super
     end
 
     def form_data
