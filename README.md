@@ -1,6 +1,6 @@
 # ProMotion-form
 
-[![Gem Version](https://badge.fury.io/rb/ProMotion-form.svg)](http://badge.fury.io/rb/ProMotion-form) [![Build Status](https://travis-ci.org/clearsightstudio/ProMotion-form.svg)](https://travis-ci.org/clearsightstudio/ProMotion-form) [![Code Climate](https://codeclimate.com/github/clearsightstudio/ProMotion-form.png)](https://codeclimate.com/github/clearsightstudio/ProMotion-form)
+[![Gem Version](https://badge.fury.io/rb/ProMotion-form.svg)](http://badge.fury.io/rb/ProMotion-form) [![Build Status](https://travis-ci.org/clearsightstudio/ProMotion-form.svg)](https://travis-ci.org/clearsightstudio/ProMotion-form) [![Code Climate](https://codeclimate.com/github/clearsightstudio/ProMotion-form/badges/gpa.svg)](https://codeclimate.com/github/clearsightstudio/ProMotion-form)
 
 ProMotion-form provides a PM::FormScreen for the
 popular RubyMotion gem [ProMotion](https://github.com/clearsightstudio/ProMotion).
@@ -162,7 +162,7 @@ None yet.
 
 #### form_object (read only)
 
-This is a Struct with a `#fields` method (what is used to build the form in FXForms) and writeable properties for each field.
+This is a Struct with a `#fields` method (which is used to build the form in FXForms) and writeable properties for each field.
 
 ## Contributing
 
