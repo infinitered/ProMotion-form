@@ -31,3 +31,5 @@ tmp
 *.tmproject
 tmtags
 *.sublime-workspace
+
+vendor/Pods/*
