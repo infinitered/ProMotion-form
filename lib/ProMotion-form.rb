@@ -2,6 +2,7 @@
 unless defined?(Motion::Project::Config)
   raise "ProMotion-form must be required within a RubyMotion project."
 end
+require 'motion-cocoapods'
 
 Motion::Project::App.setup do |app|
   lib_dir_path = File.dirname(File.expand_path(__FILE__))
