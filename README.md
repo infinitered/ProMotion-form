@@ -84,6 +84,7 @@ class AccountScreen < PM::FormScreen
       }, {
         name: :submit,
         title: "Submit",
+        type: :button,
         action: "my_action:"
       }]
     }]
