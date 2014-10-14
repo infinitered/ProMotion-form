@@ -17,7 +17,12 @@ describe "ProMotion::TestFormScreen unit" do
     @form_screen = nil
   end
 
-  it "contains two sections" do
+  it "contains cells" do
+    form_controller.sections[0].fields.count.should == 2
+    form_controller.sections[1].fields.count.should == 1
+  end
+
+  it "contains sections" do
     form_controller.sections.count.should == 2
   end
 
