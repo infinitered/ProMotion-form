@@ -102,7 +102,7 @@ All possible form field properties:
 ```ruby
 {
   label: "Name", # or title:
-  name: :name, # required
+  name: :name, # defaults to symbol of snake_cased label/title
   type: :string, # :default is default...like a button
   options: [ "Water", "Fire", "Wind" ], # for a subform select (`type` can be anything)
   placeholder: "Your name",
