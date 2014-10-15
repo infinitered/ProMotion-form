@@ -16,6 +16,12 @@ class TestFormScreen < PM::FormScreen
         type: :password,
         value: ""
       }]
+    }, {
+      title: "Second Section",
+      cells: [{
+        title: "Cell Without A Name",
+        value: ""
+      }]
     }]
   end
 

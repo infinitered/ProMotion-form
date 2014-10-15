@@ -49,7 +49,7 @@ module ProMotion
     def input_data(input, header, footer)
       data = {}
       data[:header] = header if header
-      data[:key] = input.fetch(:name)
+      data[:key] = input[:name] || input[:title].downcase.gsub(/[^0-9a-z]/i, '_').to_sym
       data[:type] = input[:type] if input[:type]
       data[:title] = input[:label] || input[:title] || input[:name].to_s
       data[:options] = input[:options] if input[:options]
