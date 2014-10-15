@@ -9,9 +9,8 @@ describe "ProMotion::TestFormScreen functionality" do
     form_screen.navigationController
   end
 
-  after do
-    @form_screen = nil
-  end
+  before { form_screen.update_form_data }
+  after { @form_screen = nil }
 
   it "has a navigation bar" do
     form_screen.navigationController.should.be.kind_of(UINavigationController)
