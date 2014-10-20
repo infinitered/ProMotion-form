@@ -57,6 +57,7 @@ module ProMotion
       data[:default] = input[:default] if input[:default]
       data[:value] = input[:value] if input[:value]
       data[:action] = input[:action] if input[:action]
+      data[:cell] = input[:cell_class] if input[:cell_class]
       data
     end
   end

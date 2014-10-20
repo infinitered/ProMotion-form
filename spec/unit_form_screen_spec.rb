@@ -17,7 +17,7 @@ describe "ProMotion::TestFormScreen unit" do
   after { @form_screen = nil }
 
   it "contains sections" do
-    form_controller.sections.count.should == 2
+    form_controller.sections.count.should == 3
   end
 
   it "contains cells" do
@@ -31,6 +31,14 @@ describe "ProMotion::TestFormScreen unit" do
     field.class.should == FXFormField
     field.title.should == "Cell Without A Name"
     field.key.should == :cell_without_a_name
+  end
+
+  it "uses custom cell classes" do
+    field = form_controller.sections[2].fields[0]
+
+    field.class.should == MyCustomCell
+    # field.class.should == FXFormField
+    field.set_up?.should == true
   end
 
 end
