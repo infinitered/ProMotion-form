@@ -1,23 +1,18 @@
-class MyCustomCell < FXFormBaseCell
-
+class MyCustomCell < FXFormTextFieldCell
   def setUp
-    puts "Cell was set up"
-    @set_up = true
     super # optional
   end
 
   def update
-    puts "Cell was updated"
     super # optional
+
+    # Overwrite the title specified in the form hash
+    # so we can test that the custom cell updated properly
+    self.textField.text = "Cell Updated"
   end
 
   def didSelectWithTableView(tableView, controller:controller)
-    puts "Cell was selected"
     super # optional
-  end
-
-  def set_up?
-    @set_up || false
   end
 
 end

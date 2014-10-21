@@ -33,10 +33,11 @@ describe "ProMotion::TestFormScreen unit" do
     field.key.should == :cell_without_a_name
   end
 
-  it "uses custom cell classes" do
+  it "can use custom cell classes" do
     field = form_controller.sections[2].fields[0]
 
     field.cell.should == MyCustomCell
+    view("Cell Updated").should.not.be.nil
   end
 
 end
