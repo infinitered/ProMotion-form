@@ -36,9 +36,7 @@ describe "ProMotion::TestFormScreen unit" do
   it "uses custom cell classes" do
     field = form_controller.sections[2].fields[0]
 
-    field.class.should == MyCustomCell
-    # field.class.should == FXFormField
-    field.set_up?.should == true
+    field.cell.should == MyCustomCell
   end
 
 end
