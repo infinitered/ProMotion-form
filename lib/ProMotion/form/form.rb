@@ -39,7 +39,7 @@ module ProMotion
     end
 
     def values
-      fields.map{ |f| f[:value].to_s }
+      fields.map{ |f| f[:value] }
     end
 
     def form_fields
