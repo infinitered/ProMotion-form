@@ -25,13 +25,9 @@ module ProMotion
       @fields ||= begin
         header = nil
         form_data.map do |section|
-          rows = Array(section[:cells]).map do |input|
-            input_data(input)
-          end
-          if rows.length > 0
-            rows.first[:header] = section[:title] if section[:title]
-            rows.last[:footer] = section[:footer] if section[:footer]
-          end
+          rows = Array(section[:cells]).map{ |input| input_data(input) }
+          rows.first[:header] = section[:title] if section[:title] && rows.length > 0
+          rows.last[:footer] = section[:footer] if section[:footer] && rows.length > 0
           rows
         end.flatten
       end
