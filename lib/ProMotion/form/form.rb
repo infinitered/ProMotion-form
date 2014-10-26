@@ -25,11 +25,10 @@ module ProMotion
       @fields ||= begin
         header = nil
         form_data.map do |section|
-          header = section[:title]
-          footer = section[:footer]
-          Array(section[:cells]).map do |input|
-            input_data(input, header, footer).tap{|i| header = nil; footer = nil }
-          end
+          rows = Array(section[:cells]).map{ |input| input_data(input) }
+          rows.first[:header] = section[:title] if section[:title] && rows.length > 0
+          rows.last[:footer] = section[:footer] if section[:footer] && rows.length > 0
+          rows
         end.flatten
       end
     end
@@ -46,9 +45,8 @@ module ProMotion
       fields.map{ |f| f.dup.tap{|f2| f2.delete(:value) } }
     end
 
-    def input_data(input, header, footer)
+    def input_data(input)
       data = {}
-      data[:header] = header if header
       data[:key] = input[:name] || input[:title].downcase.gsub(/[^0-9a-z]/i, '_').to_sym
       data[:type] = input[:type] if input[:type]
       data[:title] = input[:label] || input[:title] || input[:name].to_s
