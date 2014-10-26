@@ -39,7 +39,7 @@ module ProMotion
     end
 
     def values
-      fields.map{ |f| f[:value] }
+      fields.map{ |f| get_value(f) }
     end
 
     def form_fields
@@ -58,6 +58,16 @@ module ProMotion
       data[:value] = input[:value] if input[:value]
       data[:action] = input[:action] if input[:action]
       data
+    end
+
+    def get_value(f)
+      f[:value] || begin
+        case f[:type]
+        when :date then NSDate.date
+        when :time then NSDate.date
+        else ""
+        end
+      end
     end
   end
 end
