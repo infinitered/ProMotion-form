@@ -24,6 +24,10 @@ describe "ProMotion::TestFormScreen functionality" do
     view("ACCOUNT INFORMATION").should.not.be.nil
   end
 
+  it "contains a section footer" do
+    view("Some help text").should.not.be.nil
+  end
+
   it "contains an email and password label" do
     view("Email").should.not.be.nil
     view("Password").should.not.be.nil
