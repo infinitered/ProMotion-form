@@ -21,7 +21,7 @@ describe "ProMotion::TestFormScreen unit" do
   end
 
   it "contains cells" do
-    form_controller.sections[0].fields.count.should == 2
+    form_controller.sections[0].fields.count.should == 3
     form_controller.sections[1].fields.count.should == 1
   end
 
@@ -38,6 +38,16 @@ describe "ProMotion::TestFormScreen unit" do
 
     field.cell.should == MyCustomCell
     view("Cell Updated").should.not.be.nil
+  end
+
+  it "provides a sensible default for cells without a :value" do
+    field0 = form_controller.sections[0].fields[0]
+    field1 = form_controller.sections[0].fields[1]
+    field2 = form_controller.sections[0].fields[2]
+
+    field0.value.should == "jamon@example.com"
+    field1.value.should == ""
+    field2.value.to_s.should == NSDate.date.to_s
   end
 
 end

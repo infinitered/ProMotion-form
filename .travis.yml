@@ -9,5 +9,5 @@ gemfile:
 script:
     - bundle exec rake clean:all
     - bundle install
-    - bundle exec rake pod:install
+    - bundle exec rake pod:install > /dev/null
     - bundle exec rake spec

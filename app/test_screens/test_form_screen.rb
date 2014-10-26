@@ -14,13 +14,16 @@ class TestFormScreen < PM::FormScreen
         name: "password",
         title: "Password",
         type: :password,
-        value: ""
+      }, {
+        name: "date",
+        title: "Date",
+        type: :date,
       }]
     }, {
       title: "Second Section",
       cells: [{
         title: "Cell Without A Name",
-        value: ""
+        value: "",
       }]
     }, {
       title: "Custom Cells",
