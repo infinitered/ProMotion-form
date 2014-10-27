@@ -1,6 +1,9 @@
+# class MyButtonCell < FXFormBaseCell -> empty, where you add your own items
 class MyCustomCell < FXFormTextFieldCell
+
   def setUp
     super # optional
+    self.backgroundColor = UIColor.redColor
   end
 
   def update
