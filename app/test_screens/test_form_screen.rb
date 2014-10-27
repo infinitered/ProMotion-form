@@ -36,6 +36,7 @@ class TestFormScreen < PM::FormScreen
   end
 
   def current_user
+    $junk = self
     Struct.new(:email, :password).new("jamon@example.com", "testing123456")
   end
 
