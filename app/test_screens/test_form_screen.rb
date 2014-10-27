@@ -25,6 +25,13 @@ class TestFormScreen < PM::FormScreen
         title: "Cell Without A Name",
         value: "",
       }]
+    }, {
+      title: "Custom Cells",
+      cells: [{
+        title: "Test Cell",
+        value: "Test Custom Class",
+        cell_class: MyCustomCell
+      }]
     }]
   end
 
