@@ -5,8 +5,8 @@ module ProMotion
     attr_reader :form_object
 
     def viewDidLoad
-      update_form_data
       super
+      update_form_data
     end
 
     def form_data
@@ -18,6 +18,7 @@ module ProMotion
       @form_object = PM::Form.new(self.form_data).build
       self.formController.form = @form_object
       self.formController.delegate = self
+      self.view.reloadData
     end
 
     def dismiss_keyboard
