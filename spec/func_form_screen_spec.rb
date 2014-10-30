@@ -16,12 +16,16 @@ describe "ProMotion::TestFormScreen functionality" do
     form_screen.navigationController.should.be.kind_of(UINavigationController)
   end
 
-  it "contains an email and password input" do
-    views(UITextField).length.should == 2
+  it "contains an email and password input and other input" do
+    views(UITextField).length.should == 4
   end
 
   it "contains a section title" do
     view("ACCOUNT INFORMATION").should.not.be.nil
+  end
+
+  it "contains a section footer" do
+    view("Some help text").should.not.be.nil
   end
 
   it "contains an email and password label" do
