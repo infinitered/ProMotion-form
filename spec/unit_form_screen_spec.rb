@@ -50,4 +50,12 @@ describe "ProMotion::TestFormScreen unit" do
     field2.value.to_s.should == NSDate.date.to_s
   end
 
+  it "allows cell customization from the hash" do
+    field = form_controller.sections[1].fields[0]
+    settings = field.cellConfig # returns hash of custom settings
+    settings.include?("textLabel.color").should == true
+    settings["textLabel.color"].should == UIColor.blueColor
+    settings.include?("textLabel.font").should == true
+    settings["textLabel.font"].should == UIFont.fontWithName('Helvetica-Light', size: 25)
+  end
 end

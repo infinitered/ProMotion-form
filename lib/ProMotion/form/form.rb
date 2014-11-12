@@ -47,15 +47,16 @@ module ProMotion
 
     def input_data(input)
       data = {}
-      data[:key] = input[:name] || input[:title].downcase.gsub(/[^0-9a-z]/i, '_').to_sym
-      data[:type] = input[:type] if input[:type]
-      data[:title] = input[:label] || input[:title] || input[:name].to_s
-      data[:options] = input[:options] if input[:options]
-      data[:placeholder] = input[:placeholder] if input[:placeholder]
-      data[:default] = input[:default] if input[:default]
-      data[:value] = input[:value] if input[:value]
-      data[:action] = input[:action] if input[:action]
-      data[:cell] = input[:cell_class] if input[:cell_class]
+
+      # set data with non-helper keys
+      helpers = [ :name, :cell_class ]
+      (input.keys - helpers).each {|key| data[key] = input[key] }
+
+      # implement helpers
+      data[:key  ] ||= input[:name ] || input[:title].downcase.gsub(/[^0-9a-z]/i, '_').to_sym
+      data[:title] ||= input[:label] || input[:name ].to_s
+      data[:cell ] ||= input[:cell_class] if input[:cell_class]
+
       data
     end
 
