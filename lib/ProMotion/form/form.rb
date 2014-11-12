@@ -56,6 +56,7 @@ module ProMotion
       data[:value] = input[:value] if input[:value]
       data[:action] = input[:action] if input[:action]
       data[:cell] = input[:cell_class] if input[:cell_class]
+      input.each {|k,v| data[k] = v if String === k }
       data
     end
 
