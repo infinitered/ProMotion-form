@@ -36,8 +36,7 @@ describe "ProMotion::TestFormScreen unit" do
   it "can use custom cell classes" do
     field = form_controller.sections[2].fields[0]
 
-    # was .cellClass
-    field.cell.should == MyCustomCell
+    field.cellClass.should == MyCustomCell
     view("Cell Updated").should.not.be.nil
   end
 
