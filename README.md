@@ -5,7 +5,7 @@
 ProMotion-form provides a PM::FormScreen for the
 popular RubyMotion gem [ProMotion](https://github.com/clearsightstudio/ProMotion).
 
-![form](http://clrsight.co/jh/Screen_Shot_2014-08-29_at_4.03.13_PM.png?+)
+![form](http://i.imgur.com/pQbGqK1.png)
 
 ## Installation
 
@@ -43,6 +43,35 @@ class MyFormScreen < PM::FormScreen
         name: "password",
         title: "New Password",
         type: :password,
+        value: ""
+      }]
+    }]
+  end
+
+end
+```
+
+*Can also be driven by properties available in [FXForms](https://github.com/nicklockwood/FXForms) Docs.
+
+```ruby
+class MyFormScreen < PM::FormScreen
+  title "My Form"
+
+  def form_data
+    [{
+      title: "Account Information",
+      footer: "Some help text",
+      cells: [{
+        key: "email",
+        label: "ID",
+        type: :email,
+        "textLabel.font" => UIFont.fontWithName('Helvetica-Light', size: 25),
+        value: current_user.email,
+      }, {
+        key: "password",
+        label: "New Password",
+        type: :password,
+        "textLabel.color" => UIColor.blueColor,
         value: ""
       }]
     }]
@@ -97,11 +126,20 @@ class AccountScreen < PM::FormScreen
 end
 ```
 
-All possible form field properties:
+All form field properties from FXForms are exposed.  A full listing can be found [here in their Readme](https://github.com/nicklockwood/FXForms#form-field-properties).
+
+Additional "helper" field properties have been started, and are listed below:
+  * `name` - a convenience alias to FXForms `key`. If no name is provided, title is converted to a symbol and used as the key.
+  * `title` - when no title is provided, label and then name are used respectively.
+  * `cell_class` - a convenience alias to FXForms `cell`, but with the ProMotion naming scheme.
+}
+```
+
+Here are sample form fields with some explanation
 
 ```ruby
 {
-  label: "Name", # or title:
+  label: "Name", # or title
   name: :name, # defaults to symbol of snake_cased label/title
   type: :string, # :default is default...like a button
   options: [ "Water", "Fire", "Wind" ], # for a subform select (`type` can be anything)
@@ -137,7 +175,7 @@ All possible form field properties:
 
 #### update_form_data
 
-Forces a reload of the form.
+Forces a reload of the form.  This is useful when your have changed the hash you returned in your `form_data` method.
 
 #### render_form
 
