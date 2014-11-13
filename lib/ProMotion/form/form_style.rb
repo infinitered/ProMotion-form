@@ -1,6 +1,6 @@
 module ProMotion
   class FormStyle < Hash
-    def initialize(obj)
+    def initialize(obj=nil)
       replace(obj) if obj.kind_of? Hash
     end
 

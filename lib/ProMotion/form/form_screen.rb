@@ -29,5 +29,11 @@ module ProMotion
       Hash[form_object.each_pair.to_a].tap{|h| h.delete(:fields) }
     end
 
+    def style(*ary)
+      @form_styles ||= styles
+      @form_styles_cache ||= {}
+      @form_styles_cache[ary * ':'] ||= ary.inject(PM::FormStyle.new) {|all, one| all << @form_styles[one] }
+    end
+
   end
 end
