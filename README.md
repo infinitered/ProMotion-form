@@ -62,17 +62,17 @@ class MyFormScreen < PM::FormScreen
       title: "Account Information",
       footer: "Some help text",
       cells: [{
-        :key => "email",
-        :label => "ID",
-        :type => :email,
+        key: "email",
+        label: "ID",
+        type: :email,
         "textLabel.font" => UIFont.fontWithName('Helvetica-Light', size: 25),
-        :value => current_user.email,
+        value: current_user.email,
       }, {
-        :key => "password",
-        :label => "New Password",
-        :type => :password,
+        key: "password",
+        label: "New Password",
+        type: :password,
         "textLabel.color" => UIColor.blueColor,
-        :value => ""
+        value: "",
       }]
     }]
   end
@@ -162,7 +162,7 @@ Here are sample form fields with some explanation
 * `:password`
 * `:number`
 * `:integer`
-* `:unsigned` - Coming soon
+* `:unsigned`
 * `:float`
 * `:bitfield`
 * `:boolean`
@@ -175,7 +175,7 @@ Here are sample form fields with some explanation
 
 #### update_form_data
 
-Forces a reload of the form.  This is useful when your have changed the hash you returned in your `form_data` method.
+Forces a reload of the form.  This is useful when you have changed the hash you returned in your `form_data` method.
 
 #### render_form
 
