@@ -7,5 +7,9 @@ module ProMotion
     def +(obj)
       merge(obj)
     end
+
+    def <<(obj)
+      merge!(obj)
+    end
   end
 end
