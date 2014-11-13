@@ -49,7 +49,7 @@ module ProMotion
       data = {}
 
       # use style helper key
-      data.update(input[:style]) if input[:style].kind_of?(Hash)
+      data.update(FormStyle.to_style(input[:style])) if input[:style]
 
       # load non-helper keys as FXForm fields
       helpers = [ :cell_class, :name, :style ]
