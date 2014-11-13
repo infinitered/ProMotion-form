@@ -34,6 +34,5 @@ module ProMotion
       @form_styles_cache ||= {}
       @form_styles_cache[ary * ':'] ||= ary.inject(PM::FormStyle.new) {|all, one| all << @form_styles[one] }
     end
-
   end
 end
