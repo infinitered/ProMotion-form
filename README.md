@@ -53,90 +53,90 @@ end
 
 ## Styling
 
-### Method 1: Just slap these onto the cell
+#### Method 1: Just slap these onto the cell
 
 ```
- "accessoryView"        => CustomAccessory.new,
- "backgroundColor"      => rmq.color.translucent_white,
- "detailTextLabel.font" => rmq.font.label,
+  "accessoryView"        => CustomAccessory.new,
+  "backgroundColor"      => rmq.color.translucent_white,
+  "detailTextLabel.font" => rmq.font.label,
 }
 ```
 
-### Method 2: Put them into a style helper key
+#### Method 2: Put them into a style helper key
 
 ```
- style: {
-   "accessoryView"        => CustomAccessory.new,
-   "backgroundColor"      => rmq.color.translucent_white,
-   "detailTextLabel.font" => rmq.font.label,
- },
+  style: {
+    "accessoryView"        => CustomAccessory.new,
+    "backgroundColor"      => rmq.color.translucent_white,
+    "detailTextLabel.font" => rmq.font.label,
+  },
 }
 ```
 
-### Method 3: Mix and match
+#### Method 3: Mix and match
 
 ```
- style: {
-   "accessoryView"        => CustomAccessory.new,
-   "detailTextLabel.font" => rmq.font.label,
- },
- "backgroundColor"      => rmq.color.translucent_white,
+  style: {
+    "accessoryView"        => CustomAccessory.new,
+    "detailTextLabel.font" => rmq.font.label,
+  },
+  "backgroundColor"      => rmq.color.translucent_white,
 }
 ```
 
-### Method 4: Use a style
+#### Method 4: Use a style
 
 ```
 def style
- {
-   basic: {
-     "accessoryView"        => CustomAccessory.new,
-     "detailTextLabel.font" => rmq.font.label,
-   },
- }
+  {
+    basic: {
+      "accessoryView"        => CustomAccessory.new,
+      "detailTextLabel.font" => rmq.font.label,
+    },
+  }
 end
 
 ...
 
- style: style(:basic),
+  style: style(:basic),
 }
 ```
 
-### Method 5: Combine styles
+#### Method 5: Combine styles
 
 ```
 def style
- {
-   basic: {
-     "accessoryView"        => CustomAccessory.new,
-     "detailTextLabel.font" => rmq.font.label,
-   },
-   alert: {
-     "backgroundColor"      => rmq.color.red,
-   },
- }
+  {
+    basic: {
+      "accessoryView"        => CustomAccessory.new,
+      "detailTextLabel.font" => rmq.font.label,
+    },
+    alert: {
+      "backgroundColor"      => rmq.color.red,
+    },
+  }
 end
 
 ...
 
- style: style(:basic, :alert),
+  style: style(:basic, :alert),
 }
 ```
 
-### Method 6: Combine styles, with overrides (string keys have higher priority)
+#### Method 6: Combine styles, with overrides (string keys have higher priority)
 
 ```
- style: style(:basic, :alert),
- "backgroundColor" => rmq.color.yellow,
+  style: style(:basic, :alert),
+  "backgroundColor" => rmq.color.yellow,
 }
 ```
 
-### Method 7: Combine styles, with overrides (using '+')
+#### Method 7: Combine styles, with overrides (using '+')
 
 ```
- style: style(:basic, :alert) + {
-   "backgroundColor" => rmq.color.yellow,
- },
+  style: style(:basic, :alert) + {
+    "backgroundColor" => rmq.color.yellow,
+  },
 }
 ```
 
