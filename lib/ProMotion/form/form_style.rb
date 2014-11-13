@@ -5,11 +5,12 @@ module ProMotion
     end
 
     def +(obj)
-      merge(obj)
+      merge(obj || {})
     end
 
     def <<(obj)
-      merge!(obj)
+      merge!(obj || {})
+    end
     end
   end
 end
