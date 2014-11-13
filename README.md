@@ -1,6 +1,6 @@
 # ProMotion-form
 
-[![Gem Version](https://badge.fury.io/rb/ProMotion-form.svg)](http://badge.fury.io/rb/ProMotion-form) [![Build Status](https://travis-ci.org/clearsightstudio/ProMotion-form.svg)](https://travis-ci.org/clearsightstudio/ProMotion-form) [![Code Climate](https://codeclimate.com/github/clearsightstudio/ProMotion-form/badges/gpa.svg)](https://codeclimate.com/github/clearsightstudio/ProMotion-form)
+[![Gem Version](https://badge.fury.io/rb/ProMotion-form.svg)](http://badge.fury.io/rb/ProMotion-form) [![Build Status](https://travis-ci.org/clearsightstudio/ProMotion-form.svg?branch=master)](https://travis-ci.org/clearsightstudio/ProMotion-form) [![Code Climate](https://codeclimate.com/github/clearsightstudio/ProMotion-form/badges/gpa.svg)](https://codeclimate.com/github/clearsightstudio/ProMotion-form)
 
 ProMotion-form provides a PM::FormScreen for the
 popular RubyMotion gem [ProMotion](https://github.com/clearsightstudio/ProMotion).
