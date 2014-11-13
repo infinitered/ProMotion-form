@@ -62,17 +62,17 @@ class MyFormScreen < PM::FormScreen
       title: "Account Information",
       footer: "Some help text",
       cells: [{
-        key: "email",
-        label: "ID",
-        type: :email,
+        :key => "email",
+        :label => "ID",
+        :type => :email,
         "textLabel.font" => UIFont.fontWithName('Helvetica-Light', size: 25),
-        value: current_user.email,
+        :value => current_user.email,
       }, {
-        key: "password",
-        label: "New Password",
-        type: :password,
+        :key => "password",
+        :label => "New Password",
+        :type => :password,
         "textLabel.color" => UIColor.blueColor,
-        value: ""
+        :value => ""
       }]
     }]
   end
