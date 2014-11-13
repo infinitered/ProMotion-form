@@ -51,6 +51,95 @@ class MyFormScreen < PM::FormScreen
 end
 ```
 
+### What about Formotion?
+
+We have used and like Formotion for some form-heavy apps, but it's a rather bulky gem. ProMotion-form works better with ProMotion and is a lot smaller.
+
+---
+
+### Methods
+
+#### form_data
+
+Method that is called to build the form.
+
+```ruby
+class AccountScreen < PM::FormScreen
+  title "Account Info"
+
+  def form_data
+    [{
+      title: "Account Information",
+      footer: "Help text here",
+      cells: [{
+        name: "email",
+        title: "ID",
+        type: :email,
+        value: current_user.email,
+      }, {
+        name: "password",
+        title: "Password",
+        type: :password,
+        value: ""
+      }, {
+        name: :submit,
+        title: "Submit",
+        type: :button,
+        action: "my_action:"
+      }]
+    }]
+  end
+
+  def my_action(cell)
+    # cell is the calling cell, in this case the Submit cell
+    render_form # use to save the data
+  end
+end
+```
+
+All possible form field properties:
+
+```ruby
+{
+  label: "Name", # or title:
+  name: :name, # defaults to symbol of snake_cased label/title
+  type: :string, # :default is default...like a button
+  options: [ "Water", "Fire", "Wind" ], # for a subform select (`type` can be anything)
+  placeholder: "Your name",
+  default: "Jamon", # Coming soon
+  value: "Jamon Holmgren",
+  action: :"my_action:" # use symbol literal with trailing colon due to Obj-C semantics
+}
+```
+
+##### Field types:
+
+* `:default`
+* `:label`
+* `:text`
+* `:longtext`
+* `:url`
+* `:email`
+* `:phone` - Coming soon
+* `:password`
+* `:number`
+* `:integer`
+* `:unsigned` - Coming soon
+* `:float`
+* `:bitfield`
+* `:boolean`
+* `:option`
+* `:date`
+* `:time`
+* `:datetime`
+* `:image`
+
+##### Helper keys:
+
+* `:cell` or `:cell_class` - use a custom cell class
+* `:style` - a flexible way to define styling parameters (see Styling section below)
+*  string keys - you can also define styling parameters as top-level strings
+
 ## Styling
 
 #### Method 1: Just slap these onto the cell
@@ -139,90 +228,6 @@ end
   },
 }
 ```
-
-### What about Formotion?
-
-We have used and like Formotion for some form-heavy apps, but it's a rather bulky gem. ProMotion-form works better with ProMotion and is a lot smaller.
-
----
-
-### Methods
-
-#### form_data
-
-Method that is called to build the form.
-
-```ruby
-class AccountScreen < PM::FormScreen
-  title "Account Info"
-
-  def form_data
-    [{
-      title: "Account Information",
-      footer: "Help text here",
-      cells: [{
-        name: "email",
-        title: "ID",
-        type: :email,
-        value: current_user.email,
-      }, {
-        name: "password",
-        title: "Password",
-        type: :password,
-        value: ""
-      }, {
-        name: :submit,
-        title: "Submit",
-        type: :button,
-        action: "my_action:"
-      }]
-    }]
-  end
-
-  def my_action(cell)
-    # cell is the calling cell, in this case the Submit cell
-    render_form # use to save the data
-  end
-end
-```
-
-All possible form field properties:
-
-```ruby
-{
-  label: "Name", # or title:
-  name: :name, # defaults to symbol of snake_cased label/title
-  type: :string, # :default is default...like a button
-  options: [ "Water", "Fire", "Wind" ], # for a subform select (`type` can be anything)
-  placeholder: "Your name",
-  default: "Jamon", # Coming soon
-  value: "Jamon Holmgren",
-  action: :"my_action:" # use symbol literal with trailing colon due to Obj-C semantics
-}
-```
-
-##### Types of fields:
-
-* `:default`
-* `:label`
-* `:text`
-* `:longtext`
-* `:url`
-* `:email`
-* `:phone` - Coming soon
-* `:password`
-* `:number`
-* `:integer`
-* `:unsigned` - Coming soon
-* `:float`
-* `:bitfield`
-* `:boolean`
-* `:option`
-* `:date`
-* `:time`
-* `:datetime`
-* `:image`
-
 
 #### update_form_data
 
