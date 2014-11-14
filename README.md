@@ -176,7 +176,7 @@ All possible form field properties:
 #### Method 4: Use a style
 
 ```
-def style
+def styles
   {
     basic: {
       "accessoryView"        => CustomAccessory.new,
@@ -194,7 +194,7 @@ end
 #### Method 5: Combine styles
 
 ```
-def style
+def styles
   {
     basic: {
       "accessoryView"        => CustomAccessory.new,
