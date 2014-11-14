@@ -48,14 +48,14 @@ module ProMotion
     def input_data(input)
       data = {}
 
-      # use style helper key
+      # process "before" helper keys
       data.update(FormStyle.to_style(input[:style])) if input[:style]
 
-      # load non-helper keys as FXForm fields
+      # pass non-helper keys to FXForms
       helpers = [ :cell_class, :name, :style ]
       (input.keys - helpers).each {|key| data[key] = input[key] }
 
-      # process remaining helper keys
+      # process "after" helper keys
       data[:key  ] ||= input[:name ] || input[:title].downcase.gsub(/[^0-9a-z]/i, '_').to_sym
       data[:title] ||= input[:label] || input[:name ].to_s
       data[:cell ] ||= input[:cell_class] if input[:cell_class]
