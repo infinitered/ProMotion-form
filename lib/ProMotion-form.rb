@@ -10,6 +10,7 @@ Motion::Project::App.setup do |app|
   app.files << File.join(lib_dir_path, "ProMotion/form/form_style.rb")
   app.files << File.join(lib_dir_path, "ProMotion/form/form.rb")
   app.files << File.join(lib_dir_path, "ProMotion/form/form_screen.rb")
+  app.files << File.join(lib_dir_path, "ProMotion/form/form_screen_styled.rb")
 
   app.pods do
     pod "FXForms", "~> 1.2"
