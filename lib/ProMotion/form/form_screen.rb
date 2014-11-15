@@ -32,7 +32,10 @@ module ProMotion
     def style(*ary)
       @form_styles ||= styles
       @form_styles_cache ||= {}
-      @form_styles_cache[ary * ':'] ||= ary.inject(PM::FormStyle.new) {|all, one| all << @form_styles[one] }
+      @form_styles_cache[ary * ':'] ||= ary.inject(PM::FormStyle.new) do |all, one|
+        one ? (all << @form_styles[one]) : all
+      end
+    end
     end
   end
 end
