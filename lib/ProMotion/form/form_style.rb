@@ -15,7 +15,7 @@ module ProMotion
     def self.to_style(obj, out={}, ary=[])
       obj.each do |key, val|
         case val
-        when Hash  then return to_style(val, out, ary + [key.to_s])
+        when Hash  then next to_style(val, out, ary + [key.to_s])
         when Class then val = val.new
         when Proc  then val = val.call
         end
