@@ -19,7 +19,8 @@ module ProMotion
         when Class then val = val.new
         when Proc  then val = val.call
         end
-        out[(ary + [key.to_s]) * '.'] = val
+        all = (ary + [key.to_s]) * '.'
+        val ? (out[all] = val) : out.delete(all)
       end
       out
     end
