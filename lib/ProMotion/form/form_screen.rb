@@ -1,5 +1,5 @@
 module ProMotion
-  class FormScreen < PM::FormViewController
+  class FormScreen < FormViewController
     include ProMotion::ScreenModule
 
     attr_reader :form_object
