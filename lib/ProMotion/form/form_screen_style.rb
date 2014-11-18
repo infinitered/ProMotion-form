@@ -1,5 +1,5 @@
 module ProMotion
-  class FormScreenStyled < FormScreen
+  module FormScreenStyle
     def style(*ary)
       @form_styles ||= styles
       @form_styles_cache ||= {}
