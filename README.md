@@ -185,8 +185,8 @@ Here are sample form fields with some explanation
 ```
   properties: {
     "accessoryView"        => CustomAccessory.new,
-    "backgroundColor"      => rmq.color.translucent_white,
-    "detailTextLabel.font" => rmq.font.label,
+    "backgroundColor"      => UIColor.colorWhite,
+    "detailTextLabel.font" => UIFont.fontWithName("MyFont", size:20),
   },
 }
 ```
@@ -198,7 +198,7 @@ def styles
   {
     basic: {
       "accessoryView"        => CustomAccessory.new,
-      "detailTextLabel.font" => rmq.font.label,
+      "detailTextLabel.font" => UIFont.fontWithName("MyFont", size:20),
     },
   }
 end
@@ -216,10 +216,10 @@ def styles
   {
     basic: {
       "accessoryView"        => CustomAccessory.new,
-      "detailTextLabel.font" => rmq.font.label,
+      "detailTextLabel.font" => UIFont.fontWithName("MyFont", size:20),
     },
     alert: {
-      "backgroundColor"      => rmq.color.red,
+      "backgroundColor"      => UIColor.redColor,
     },
   }
 end
@@ -234,7 +234,7 @@ end
 
 ```
   properties: style(:basic, :alert) + {
-    "backgroundColor" => rmq.color.yellow,
+    "backgroundColor" => UIColor.yellowColor,
   },
 }
 ```
