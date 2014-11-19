@@ -24,8 +24,10 @@ class TestFormScreen < PM::FormScreen
       cells: [{
         title: "Cell Without A Name",
         value: "",
-        "textLabel.font" => UIFont.fontWithName('Helvetica-Light', size: 25),
-        "textLabel.color" => UIColor.blueColor,
+        properties: {
+          "textLabel.font" => UIFont.fontWithName('Helvetica-Light', size: 25),
+          "textLabel.color" => UIColor.blueColor,
+        }
       }]
     }, {
       title: "Custom Cells",
