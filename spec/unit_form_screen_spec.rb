@@ -57,5 +57,7 @@ describe "ProMotion::TestFormScreen unit" do
     settings["textLabel.color"].should == UIColor.blueColor
     settings.include?("textLabel.font").should == true
     settings["textLabel.font"].should == UIFont.fontWithName('Helvetica-Light', size: 25)
+    settings.include?("backgroundColor").should == true
+    settings["backgroundColor"].should == UIColor.lightGrayColor
   end
 end
