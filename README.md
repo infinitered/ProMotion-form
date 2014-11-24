@@ -24,7 +24,7 @@ $ rake pod:install
 
 Easily create a form screen. Powered by the CocoaPod [FXForms](https://github.com/nicklockwood/FXForms).
 
-*Has all the methods of PM::Screen*
+#### Has all the methods of PM::Screen
 
 ```ruby
 class MyFormScreen < PM::FormScreen
@@ -51,7 +51,7 @@ class MyFormScreen < PM::FormScreen
 end
 ```
 
-*Can also be driven by properties available in [FXForms](https://github.com/nicklockwood/FXForms) Docs.
+#### Can also be driven by properties available in [FXForms](https://github.com/nicklockwood/FXForms) Docs.
 
 ```ruby
 class MyFormScreen < PM::FormScreen
