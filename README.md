@@ -180,89 +180,61 @@ Here are sample form fields with some explanation
 
 ## Styling
 
-#### Method 1: Just slap these onto the cell
+#### Method 1: Put them into a style helper key
 
 ```
-  "accessoryView"        => CustomAccessory.new,
-  "backgroundColor"      => rmq.color.translucent_white,
-  "detailTextLabel.font" => rmq.font.label,
-}
-```
-
-#### Method 2: Put them into a style helper key
-
-```
-  style: {
+  properties: {
     "accessoryView"        => CustomAccessory.new,
-    "backgroundColor"      => rmq.color.translucent_white,
-    "detailTextLabel.font" => rmq.font.label,
+    "backgroundColor"      => UIColor.colorWhite,
+    "detailTextLabel.font" => UIFont.fontWithName("MyFont", size:20),
   },
 }
 ```
 
-#### Method 3: Mix and match
-
-```
-  style: {
-    "accessoryView"        => CustomAccessory.new,
-    "detailTextLabel.font" => rmq.font.label,
-  },
-  "backgroundColor"      => rmq.color.translucent_white,
-}
-```
-
-#### Method 4: Use a style
+#### Method 2: Use a style
 
 ```
 def styles
   {
     basic: {
       "accessoryView"        => CustomAccessory.new,
-      "detailTextLabel.font" => rmq.font.label,
+      "detailTextLabel.font" => UIFont.fontWithName("MyFont", size:20),
     },
   }
 end
 
 ...
 
-  style: style(:basic),
+  properties: style(:basic),
 }
 ```
 
-#### Method 5: Combine styles
+#### Method 3: Combine styles
 
 ```
 def styles
   {
     basic: {
       "accessoryView"        => CustomAccessory.new,
-      "detailTextLabel.font" => rmq.font.label,
+      "detailTextLabel.font" => UIFont.fontWithName("MyFont", size:20),
     },
     alert: {
-      "backgroundColor"      => rmq.color.red,
+      "backgroundColor"      => UIColor.redColor,
     },
   }
 end
 
 ...
 
-  style: style(:basic, :alert),
+  properties: style(:basic, :alert),
 }
 ```
 
-#### Method 6: Combine styles, with overrides (string keys have higher priority)
+#### Method 4: Combine styles, with overrides (using '+')
 
 ```
-  style: style(:basic, :alert),
-  "backgroundColor" => rmq.color.yellow,
-}
-```
-
-#### Method 7: Combine styles, with overrides (using '+')
-
-```
-  style: style(:basic, :alert) + {
-    "backgroundColor" => rmq.color.yellow,
+  properties: style(:basic, :alert) + {
+    "backgroundColor" => UIColor.yellowColor,
   },
 }
 ```

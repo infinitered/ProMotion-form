@@ -53,7 +53,7 @@ module ProMotion
       data.update(FormStyle.to_style(input[:style     ])) if input[:style     ]
 
       # pass non-helper keys to FXForms
-      helpers = [ :cell_class, :name, :style ]
+      helpers = [ :cell_class, :name, :style, :properties ]
       (input.keys - helpers).each {|key| data[key] = input[key] }
 
       # process "after" helper keys
