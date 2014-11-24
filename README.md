@@ -24,7 +24,7 @@ $ rake pod:install
 
 Easily create a form screen. Powered by the CocoaPod [FXForms](https://github.com/nicklockwood/FXForms).
 
-*Has all the methods of PM::Screen*
+#### Has all the methods of PM::Screen
 
 ```ruby
 class MyFormScreen < PM::FormScreen
@@ -51,7 +51,7 @@ class MyFormScreen < PM::FormScreen
 end
 ```
 
-*Can also be driven by properties available in [FXForms](https://github.com/nicklockwood/FXForms) Docs.
+#### Can also be driven by properties available in [FXForms](https://github.com/nicklockwood/FXForms) Docs.
 
 ```ruby
 class MyFormScreen < PM::FormScreen
@@ -150,7 +150,7 @@ Here are sample form fields with some explanation
 }
 ```
 
-##### Types of fields:
+##### Field types:
 
 * `:default`
 * `:label`
@@ -172,6 +172,72 @@ Here are sample form fields with some explanation
 * `:datetime`
 * `:image`
 
+##### Helper keys:
+
+* `:cell` or `:cell_class` - use a custom cell class
+* `:style` - a flexible way to define styling parameters (see Styling section below)
+*  string keys - you can also define styling parameters as top-level strings
+
+## Styling
+
+#### Method 1: Put them into a style helper key
+
+```
+  properties: {
+    "accessoryView"        => CustomAccessory.new,
+    "backgroundColor"      => UIColor.colorWhite,
+    "detailTextLabel.font" => UIFont.fontWithName("MyFont", size:20),
+  },
+}
+```
+
+#### Method 2: Use a style
+
+```
+def styles
+  {
+    basic: {
+      "accessoryView"        => CustomAccessory.new,
+      "detailTextLabel.font" => UIFont.fontWithName("MyFont", size:20),
+    },
+  }
+end
+
+...
+
+  properties: style(:basic),
+}
+```
+
+#### Method 3: Combine styles
+
+```
+def styles
+  {
+    basic: {
+      "accessoryView"        => CustomAccessory.new,
+      "detailTextLabel.font" => UIFont.fontWithName("MyFont", size:20),
+    },
+    alert: {
+      "backgroundColor"      => UIColor.redColor,
+    },
+  }
+end
+
+...
+
+  properties: style(:basic, :alert),
+}
+```
+
+#### Method 4: Combine styles, with overrides (using '+')
+
+```
+  properties: style(:basic, :alert) + {
+    "backgroundColor" => UIColor.yellowColor,
+  },
+}
+```
 
 #### update_form_data
 

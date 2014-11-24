@@ -1,6 +1,7 @@
 module ProMotion
-  class FormScreen < PM::FormViewController
+  class FormScreen < FormViewController
     include ProMotion::ScreenModule
+    include ProMotion::FormScreenStyle
 
     attr_reader :form_object
 
@@ -28,6 +29,5 @@ module ProMotion
     def render_form
       Hash[form_object.each_pair.to_a].tap{|h| h.delete(:fields) }
     end
-
   end
 end
