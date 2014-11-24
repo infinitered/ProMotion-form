@@ -175,12 +175,12 @@ Here are sample form fields with some explanation
 ##### Helper keys:
 
 * `:cell` or `:cell_class` - use a custom cell class
-* `:style` - a flexible way to define styling parameters (see Styling section below)
+* `:properties` - a flexible way to set cell properties (see Styling section below)
 *  string keys - you can also define styling parameters as top-level strings
 
 ## Styling
 
-#### Method 1: Put them into a style helper key
+#### Method 1: Put them into a hash
 
 ```
   properties: {
@@ -191,7 +191,7 @@ Here are sample form fields with some explanation
 }
 ```
 
-#### Method 2: Use a style
+#### Method 2: Use the `style` helper
 
 ```
 def styles
