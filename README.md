@@ -146,7 +146,10 @@ Here are sample form fields with some explanation
   placeholder: "Your name",
   default: "Jamon", # Coming soon
   value: "Jamon Holmgren",
-  action: :"my_action:" # use symbol literal with trailing colon due to Obj-C semantics
+  action: :"my_action:", # use symbol literal with trailing colon due to Obj-C semantics,
+  class: NSArray, # explicitly set the class of the field value
+  template: { type: :image }, # set the field types of a collection (requires class to be NSArray or NSOrderedSet)
+  sortable: true, # make the field sortable (requires class to be NSArray or NSOrderedSet)
 }
 ```
 
