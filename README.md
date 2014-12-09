@@ -132,8 +132,6 @@ Additional "helper" field properties have been started, and are listed below:
   * `name` - a convenience alias to FXForms `key`. If no name is provided, title is converted to a symbol and used as the key.
   * `title` - when no title is provided, label and then name are used respectively.
   * `cell_class` - a convenience alias to FXForms `cell`, but with the ProMotion naming scheme.
-}
-```
 
 Here are sample form fields with some explanation
 
