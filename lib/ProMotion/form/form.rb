@@ -48,6 +48,16 @@ module ProMotion
     def input_data(input)
       data = {}
 
+      # check for ProMotion helpers
+      if input[:image]
+        input[:properties] ||= {}
+        cell_image = input.delete(:image)
+        cell_image = UIImage.imageNamed(cell_image) if cell_image.is_a?(String)
+
+        input[:properties]['imageView.image'] = cell_image
+        input[:properties]['imageView.layer.masksToBounds'] = true
+      end
+
       # process "before" helper keys
       data.update(FormStyle.to_style(input[:properties])) if input[:properties]
       data.update(FormStyle.to_style(input[:style     ])) if input[:style     ]
