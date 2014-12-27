@@ -39,11 +39,13 @@ class MyFormScreen < PM::FormScreen
         title: "ID",
         type: :email,
         value: current_user.email,
+        image: UIImage.imageNamed('email_icon')
       }, {
         name: "password",
         title: "New Password",
         type: :password,
-        value: ""
+        value: "",
+        image: UIImage.imageNamed('key_icon')
       }]
     }]
   end
@@ -78,6 +80,16 @@ class MyFormScreen < PM::FormScreen
   end
 
 end
+```
+
+#### Parity with ProMotion::TableScreen
+
+Ongoing work is being done to bring ProMotion-form cell hashes in-line with what you can do with [PM::TableScreen](https://github.com/clearsightstudio/ProMotion/wiki/Reference%3A-All-available-table_data-options).
+
+Currently you can set:
+
+```ruby
+image: '' # An instance of UIImage or a string of the name of the image in your /resources folder
 ```
 
 ### What about Formotion?
