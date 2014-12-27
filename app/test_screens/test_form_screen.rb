@@ -39,6 +39,17 @@ class TestFormScreen < PM::FormScreen
         value: "Test Custom Class",
         cell_class: MyCustomCell
       }]
+    }, {
+      title: "Image Section",
+      cells: [{
+        title: "Cell with UIImage",
+        value: "",
+        image: UIImage.imageNamed('test')
+      },{
+        title: "Cell with String Image",
+        value: "",
+        image: 'test'
+      }]
     }]
   end
 

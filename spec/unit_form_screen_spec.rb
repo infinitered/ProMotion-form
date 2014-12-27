@@ -17,7 +17,7 @@ describe "ProMotion::TestFormScreen unit" do
   after { @form_screen = nil }
 
   it "contains sections" do
-    form_controller.sections.count.should == 3
+    form_controller.sections.count.should == 4
   end
 
   it "contains cells" do
@@ -59,5 +59,17 @@ describe "ProMotion::TestFormScreen unit" do
     settings["textLabel.font"].should == UIFont.fontWithName('Helvetica-Light', size: 25)
     settings.include?("backgroundColor").should == true
     settings["backgroundColor"].should == UIColor.lightGrayColor
+  end
+
+  it "allows the user to set a cell image" do
+    field = form_controller.sections[3].fields[0]
+    settings = field.cellConfig
+    settings['imageView.image'].class.should == UIImage
+  end
+
+  it "allows the user to set an image with a string" do
+    field = form_controller.sections[3].fields[1]
+    settings = field.cellConfig
+    settings['imageView.image'].class.should == UIImage
   end
 end

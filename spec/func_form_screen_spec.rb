@@ -17,7 +17,7 @@ describe "ProMotion::TestFormScreen functionality" do
   end
 
   it "contains an email and password input and other input" do
-    views(UITextField).length.should == 4
+    views(UITextField).length.should == 5
   end
 
   it "contains a section title" do
