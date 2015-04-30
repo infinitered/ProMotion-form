@@ -151,7 +151,7 @@ Here are sample form fields with some explanation
 {
   label: "Name", # or title
   name: :name, # defaults to symbol of snake_cased label/title
-  type: :string, # :default is default...like a button
+  type: :text, # :default is default...like a button
   options: [ "Water", "Fire", "Wind" ], # for a subform select (`type` can be anything)
   placeholder: "Your name",
   default: "Jamon", # Coming soon
