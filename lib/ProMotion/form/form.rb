@@ -79,6 +79,7 @@ module ProMotion
         case f[:type]
         when :date then NSDate.date
         when :time then NSDate.date
+        when :datetime then NSDate.date
         else ""
         end
       end
