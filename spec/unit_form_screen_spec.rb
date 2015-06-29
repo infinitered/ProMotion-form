@@ -75,6 +75,6 @@ describe "ProMotion::TestFormScreen unit" do
 
   it "allows setting the cell title using :label" do
     field = form_controller.sections[1].fields[1]
-    field.value.should.be == "Using Label"
+    field.title.should.be == "Test"
   end
 end
