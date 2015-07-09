@@ -31,7 +31,12 @@ class TestFormScreen < PM::FormScreen
           },
           backgroundColor: UIColor.lightGrayColor
         }
-      }]
+      }, {
+      name: "readonly",
+      label: "Test",
+      type: :text,
+      value: "Using Label",
+    },]
     }, {
       title: "Custom Cell Class",
       cells: [{

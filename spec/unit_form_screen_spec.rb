@@ -22,7 +22,7 @@ describe "ProMotion::TestFormScreen unit" do
 
   it "contains cells" do
     form_controller.sections[0].fields.count.should == 3
-    form_controller.sections[1].fields.count.should == 1
+    form_controller.sections[1].fields.count.should == 2
   end
 
   it "provides a sensible default for cells without a :name" do
@@ -71,5 +71,10 @@ describe "ProMotion::TestFormScreen unit" do
     field = form_controller.sections[3].fields[1]
     settings = field.cellConfig
     settings['imageView.image'].class.should == UIImage
+  end
+
+  it "allows setting the cell title using :label" do
+    field = form_controller.sections[1].fields[1]
+    field.title.should.be == "Test"
   end
 end
