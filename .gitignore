@@ -32,4 +32,5 @@ tmp
 tmtags
 *.sublime-workspace
 
-vendor/Pods/*
+vendor/Pods
+vendor/build

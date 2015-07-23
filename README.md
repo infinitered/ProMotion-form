@@ -160,6 +160,7 @@ Here are sample form fields with some explanation
   class: NSArray, # explicitly set the class of the field value
   template: { type: :image }, # set the field types of a collection (`class` must be NSArray or NSOrderedSet)
   sortable: true, # make the field sortable (`class` must be NSArray or NSOrderedSet)
+  image: 'thumbnail', # the name of the image to display on the left side of the cell. You can also pass an instance of an image: UIImage.imageNamed('thumbnail')
 }
 ```
 
@@ -191,16 +192,41 @@ Here are sample form fields with some explanation
 * `:properties` - a flexible way to set cell properties (see Styling section below)
 *  string keys - you can also define styling parameters as top-level strings
 
+##### Common Properties:
+
+The properties hash provides access to all [`UITableViewCell`](https://developer.apple.com/library/prerelease/ios/documentation/UIKit/Reference/UITableViewCell_Class/index.html) properties. Here are some examples of common properties:
+
+* `textLabel` - The `UILabel` used for displaying the `:title` text.
+* `detailTextLabel` - The `UILabel` used for displaying the `:subtitle` text.
+* `imageView` - The `UIImageView` that is displayed on the left side of the cell. ProMotion-form provides the `image:` helper on the cell hash for specifying this image.
+
+* `contentView` - The default superview for content displayed by the cell.
+* `backgroundColor` - The background color of the cell.
+* `backgroundView` - The background view of the cell. The default is nil.
+
+* `accessoryType` - The icon that appears on the right side of the cell. You may specify one of the following constants:
+  * `UITableViewCellAccessoryNone` (default)
+  * `UITableViewCellAccessoryDisclosureIndicator`
+  * `UITableViewCellAccessoryDetailDisclosureButton`
+  * `UITableViewCellAccessoryCheckmark`
+  * `UITableViewCellAccessoryDetailButton`
+* `accessoryView` - An instance of your own custom accessory view.
+
+* `selectionStyle` - The background view that applies when the cell is tapped (selected). You may specify one of the following constants:
+  * `UITableViewCellSelectionStyleNone`
+  * `UITableViewCellSelectionStyleBlue`
+  * `UITableViewCellSelectionStyleGray`
+  * `UITableViewCellSelectionStyleDefault` (default)
+
 ## Styling
 
 #### Method 1: Put them into a hash
 
 ```
-  properties: {
-    "accessoryView"        => CustomAccessory.new,
-    "backgroundColor"      => UIColor.colorWhite,
-    "detailTextLabel.font" => UIFont.fontWithName("MyFont", size:20),
-  },
+properties: {
+  "accessoryView"        => CustomAccessory.new,
+  "backgroundColor"      => UIColor.colorWhite,
+  "detailTextLabel.font" => UIFont.fontWithName("MyFont", size:20),
 }
 ```
 
@@ -246,10 +272,64 @@ end
 #### Method 4: Combine styles, with overrides (using '+')
 
 ```
-  properties: style(:basic, :alert) + {
-    "backgroundColor" => UIColor.yellowColor,
-  },
+properties: style(:basic, :alert) + {
+  "backgroundColor" => UIColor.yellowColor,
 }
+```
+
+Note that you can use symbols for keys instead of strings:
+
+```
+properties: {
+  backgroundColor: UIColor.colorWhite,
+  textLabel: {
+    font: UIFont.fontWithName("MyFont", size:20)
+  }
+}
+```
+
+However, if you are combining styles, you may want to specify they keys as strings so that the rest of your styles are not overwritten:
+
+```
+{
+  properties: style(:basic, :bold),
+}
+
+# ...
+
+def styles
+  {
+    basic: {
+      textLabel: {
+        color: UIColor.redColor
+        font: UIFont.fontWithName("MyFont", size:20)
+      }
+    },
+    bold: {
+      # This textLabel hash would overwrite the previous hash, so the red color would not be applied
+      textLabel: {
+        font: UIFont.fontWithName("MyBoldFont", size:20)
+      }
+    }
+  }
+end
+```
+
+Example of using strings with dot notation for combining styles:
+
+```
+def styles
+  {
+    basic: {
+      'textLabel.color' => UIColor.redColor
+      'textLabel.font'  => UIFont.fontWithName("MyFont", size:20)
+    },
+    bold: {
+      # This textLabel would include the red color because we only chose to overwrite the font property
+      'textLabel.font'  => UIFont.fontWithName("MyBoldFont", size:20)
+    }
+  }
+end
 ```
 
 #### update_form_data
@@ -285,8 +365,11 @@ This is a Struct with a `#fields` method (which is used to build the form in FXF
 ## Contributing
 
 1. Fork it
-2. Create your feature branch (`git checkout -b my-new-feature`)
-3. Commit your changes (`git commit -am 'Add some feature'`)
-4. Make some specs pass
-5. Push to the branch (`git push origin my-new-feature`)
-6. Create new Pull Request
+2. Install the gem dependencies: `bundle install`
+3. Install the CocoaPod dependencies: `bundle exec rake pod:install`
+4. Create your feature branch (`git checkout -b my-new-feature`)
+5. Run the test suite: `bundle exec rake spec`
+6. Make your changes. Add some specs.
+7. Commit your changes (`git commit -am 'Add some feature'`)
+8. Push to the branch (`git push -u origin my-new-feature`)
+9. Create new Pull Request
