@@ -197,7 +197,7 @@ Here are sample form fields with some explanation
 The properties hash provides access to all [`UITableViewCell`](https://developer.apple.com/library/prerelease/ios/documentation/UIKit/Reference/UITableViewCell_Class/index.html) properties. Here are some examples of common properties:
 
 * `textLabel` - The `UILabel` used for displaying the `:title` text.
-* `detailTextLabel` - The `UILabel` used for displaying the `:subtitle` text.
+* `detailTextLabel` - The `UILabel` used for displaying the `:value` text.
 * `imageView` - The `UIImageView` that is displayed on the left side of the cell. ProMotion-form provides the `image:` helper on the cell hash for specifying this image.
 
 * `contentView` - The default superview for content displayed by the cell.
