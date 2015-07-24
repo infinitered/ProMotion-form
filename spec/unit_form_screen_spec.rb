@@ -17,12 +17,36 @@ describe "ProMotion::TestFormScreen unit" do
   after { @form_screen = nil }
 
   it "contains sections" do
-    form_controller.sections.count.should == 4
+    form_controller.sections.count.should == 5
   end
 
   it "contains cells" do
     form_controller.sections[0].fields.count.should == 3
     form_controller.sections[1].fields.count.should == 2
+  end
+
+  it "provides a sensible default for cells without a :title" do
+    bad_data_section = form_controller.sections[4]
+
+    field = bad_data_section.fields[0]
+    field.class.should == FXFormField
+    field.title.should == ''
+    field.key.should == :_
+
+    field = bad_data_section.fields[1]
+    field.class.should == FXFormField
+    field.title.should == ''
+    field.key.should == :_
+
+    field = bad_data_section.fields[2]
+    field.class.should == FXFormField
+    field.title.should == ''
+    field.key.should == :_
+
+    field = bad_data_section.fields[3]
+    field.class.should == FXFormField
+    field.title.should == ''
+    field.key.should == :_
   end
 
   it "provides a sensible default for cells without a :name" do

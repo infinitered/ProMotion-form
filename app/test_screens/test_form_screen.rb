@@ -55,6 +55,14 @@ class TestFormScreen < PM::FormScreen
         value: "",
         image: 'test'
       }]
+    }, {
+      title: "Bad Data Scenarios", # the existence of these scenarios should not cause the app to crash
+      cells: [
+        { }, # nothing!
+        { title: nil },
+        { title: '' }, # title as an empty string with no fallbacks
+        { title: '', label: 'Test Label' }, # since title is not nil, label is not applied
+      ]
     }]
   end
 

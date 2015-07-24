@@ -67,6 +67,9 @@ module ProMotion
       (input.keys - helpers).each {|key| data[key] = input[key] }
 
       # process "after" helper keys
+      if input[:title].nil? or input[:title].empty? # FXForms crashes on empty strings
+        input[:title] = ' '
+      end
       data[:key  ] ||= input[:name ] || input[:title].downcase.gsub(/[^0-9a-z]/i, '_').to_sym
       data[:title] ||= input[:label] || input[:name ].to_s
       data[:cell ] ||= input[:cell_class] if input[:cell_class]
