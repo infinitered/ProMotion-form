@@ -11,7 +11,7 @@ module ProMotion
     end
 
     def form_data
-      PM.logger.info "You need to implement a `form_data` method in #{self.class.to_s}."
+      mp "You need to implement a `form_data` method in #{self.class.to_s}."
       []
     end
 
