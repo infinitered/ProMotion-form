@@ -75,6 +75,12 @@ class MyFormScreen < PM::FormScreen
         type: :password,
         "textLabel.color" => UIColor.blueColor,
         value: "",
+      },
+        name: "pin",
+        title: "PIN",
+        type: :password,
+        value: nil,
+        "textField.keyboardType" => UIKeyboardTypeNumberPad
       }]
     }]
   end
